@@ -7,12 +7,24 @@ from django.contrib.auth import get_user
 
 # función que devuelve un listado de cards. Cada card representa una imagen de la API de HP.
 def getAllImages():
-    # debe ejecutar los siguientes pasos:
-    # 1) traer un listado de imágenes crudas desde la API (ver transport.py)
-    # 2) convertir cada img. en una card.
-    # 3) añadirlas a un nuevo listado que, finalmente, se retornará con todas las card encontradas.
-    # ATENCIÓN: contemplar que los nombres alternativos, para cada personaje, deben elegirse al azar. Si no existen nombres alternativos, debe mostrar un mensaje adecuado.
-    pass
+    raw_images = transport.getAllImages()  # Jeremias: Llamamos a la función de transport.py
+    cards = [] # Jeremias: Lista de cards vacia
+
+    for img in raw_images:
+        alternate_names = img.get("alternate_names", [])  # Jeremias: Obtener nombres alternativos
+        selected_name = random.choice(alternate_names) if alternate_names else "No hay nombres alternativos" # Jeremias: Seleccionar un nombre alternativo al azar
+        card = translator.fromRequestIntoCard({
+            "name": img["name"],
+            "gender": img["gender"],
+            "house": img.get("house"),
+            "alternate_names": selected_name,
+            "actor": img.get("actor"),
+            "image": img["image"]
+        }) # Jeremias: Crear la card con los datos necesarios
+        cards.append(card) # Jeremias: Agregar la card a la lista 'cards'
+
+    # Jeremias: Retornar la lista de cards
+    return cards
 
 # función que filtra según el nombre del personaje.
 def filterByCharacter(name):
