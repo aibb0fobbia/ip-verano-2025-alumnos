@@ -33,12 +33,13 @@
             <!-- Tanya: si la imagen pertence a "x" casa, se le asignara un color. ej: gryffindor, sera rojo, border-danger -->
             {% if img.house == "Gryffindor" %}
                 <div class="card border-success mb-3 ms-5" style="max-width: 540px;">
-            {% if img.house == "Slytherin" %}
+            {% elif img.house == "Slytherin" %}
                 <div class="card border-success mb-3 ms-5" style="max-width: 540px;">
-            {% if img.house == "Hufflepuff" %}
+            {% elif img.house == "Hufflepuff" %}
                 <div class="card border-success mb-3 ms-5" style="max-width: 540px;">
-            {% if img-house == "Raveclaw" %}
+            {% elif img-house == "Raveclaw" %}
                 <div class="card border-success mb-3 ms-5" style="max-width: 540px;">
+            {% endif %}
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="{{ img.image }}" class="card-img-top" alt="imagen">
