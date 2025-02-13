@@ -31,14 +31,20 @@ def filterByCharacter(name):
     filtered_cards = []
 
     for card in getAllImages():
-        # debe verificar si el name está contenido en el nombre de la card, antes de agregarlo al listado de filtered_cards.
-        filtered_cards.append(card)
+        if name.lower() in card.name.lower():# gabriel: verifica si el nombre esta dentro de la card antes de añadirla
+            filtered_cards.append(card)
 
     return filtered_cards
 
 # función que filtra las cards según su casa.
 def filterByHouse(house_name):
     filtered_cards = []
+
+    for card in getAllImages():
+        if house_name.lower() in card.house.lower():# gabriel: verifica si es la casa antes de añadirla
+            filtered_cards.append(card)
+
+    return filtered_cards
 
     for card in getAllImages():
         # debe verificar si la casa de la card coincide con la recibida por parámetro. Si es así, se añade al listado de filtered_cards.
