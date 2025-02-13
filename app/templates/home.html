@@ -30,8 +30,15 @@
         <h2 class="text-center">La búsqueda no arrojó resultados...</h2>
         {% else %} {% for img in images %}
         <div class="col">
-            <!-- evaluar si la imagen pertenece a Gryffindor, Slytherin u otro -->
-            <div class="card border-success mb-3 ms-5" style="max-width: 540px;">
+            <!-- Tanya: si la imagen pertence a "x" casa, se le asignara un color. ej: gryffindor, sera rojo, border-danger -->
+            {% if img.house == "Gryffindor" %}
+                <div class="card border-success mb-3 ms-5" style="max-width: 540px;">
+            {% if img.house == "Slytherin" %}
+                <div class="card border-success mb-3 ms-5" style="max-width: 540px;">
+            {% if img.house == "Hufflepuff" %}
+                <div class="card border-success mb-3 ms-5" style="max-width: 540px;">
+            {% if img-house == "Raveclaw" %}
+                <div class="card border-success mb-3 ms-5" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="{{ img.image }}" class="card-img-top" alt="imagen">
