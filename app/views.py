@@ -10,7 +10,7 @@ def index_page(request):
 
 # esta función obtiene 2 listados: uno de las imágenes de la API y otro de favoritos, ambos en formato Card, y los dibuja en el template 'home.html'.
 def home(request):
-    images = images = services.getAllImages() # Jeremias: Esta función define a 'images' con la lista de todas las cards
+    images = images = services.getAllIm # Jeremias: Esta función define a 'images' con la lista de todas las cards
     favourite_list = []
 
     return render(request, 'home.html', { 'images': images, 'favourite_list': favourite_list })
@@ -21,7 +21,7 @@ def search(request):
 
     # si el usuario ingresó algo en el buscador, se deben filtrar las imágenes por dicho ingreso.
     if (name != ''):
-        images = []
+        images = services.filterBycharacter(name) #gabriel: filtramos segun nombre de personaje.
         favourite_list = []
 
         return render(request, 'home.html', { 'images': images, 'favourite_list': favourite_list })
@@ -32,8 +32,8 @@ def search(request):
 def filter_by_house(request):
     house = request.POST.get('house', '')
 
-    if house != '':
-        images = [] # debe traer un listado filtrado de imágenes, según la casa.
+    if (house != ''):
+        images = services.filterByHouse(house) #gabriel: debe traer un listado filtrado de imagenes, segun casa.
         favourite_list = []
 
         return render(request, 'home.html', { 'images': images, 'favourite_list': favourite_list })
