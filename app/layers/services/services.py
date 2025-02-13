@@ -4,6 +4,7 @@ from ..transport import transport
 from ..persistence import repositories
 from ..utilities import translator
 from django.contrib.auth import get_user
+import random
 
 # función que devuelve un listado de cards. Cada card representa una imagen de la API de HP.
 def getAllImages():
